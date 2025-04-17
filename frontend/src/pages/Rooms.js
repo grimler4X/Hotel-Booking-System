@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-// Mock room data
 const mockRooms = [
   {
     _id: '101',
@@ -34,18 +33,26 @@ function Rooms() {
   const rooms = mockRooms.filter((room) => room.hotelId === hotelId);
 
   return (
-    <div>
-      <h2>Rooms for Hotel</h2>
+    <div className="container">
+      <h2 className="my-4">Rooms for Hotel</h2>
       {rooms.length === 0 ? (
         <p>No rooms available</p>
       ) : (
-        <ul>
+        <ul className="list-group">
           {rooms.map((room) => (
-            <li key={room._id}>
+            <li key={room._id} className="list-group-item">
               <p>Room Number: {room.roomNumber}</p>
               <p>Type: {room.type}</p>
               <p>Price: ${room.price}/night</p>
               <p>Status: {room.isAvailable ? 'Available' : 'Booked'}</p>
+              {room.isAvailable && (
+                <button
+                  className="btn btn-primary mt-2"
+                  onClick={() => alert(`Booked Room ${room.roomNumber}!`)}
+                >
+                  Book
+                </button>
+              )}
             </li>
           ))}
         </ul>
