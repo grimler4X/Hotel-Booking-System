@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Mock hotel data
 const mockHotels = [
   {
     _id: '1',
